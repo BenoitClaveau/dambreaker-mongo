@@ -1,6 +1,6 @@
 /*!
  * qwebs
- * Copyright(c) 2017 Benoît Claveau <benoit.claveau@gmail.com>
+ * Copyright(c) 2018 Benoît Claveau <benoit.claveau@gmail.com>
  * MIT Licensed
 */
 const Writable = require('stream').Writable;
