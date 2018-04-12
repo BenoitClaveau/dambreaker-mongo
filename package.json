@@ -1,0 +1,47 @@
+{
+  "name": "dambreaker-mongo",
+  "version": "0.0.1",
+  "description": "Mongo client for dambreaker",
+  "main": "index.js",
+  "dependencies": {
+    "mongodb": "latest",
+    "oups": "latest",
+    "pump": "latest",
+    "dambreaker": "latest"
+  },
+  "devDependencies": {
+    "coveralls": "latest",
+    "expect.js": "latest",
+    "istanbul": "latest",
+    "mocha": "latest",
+    "chalk": "latest"
+  },
+  "scripts": {
+    "mongod": "start mongod.exe --dbpath tests/data/db",
+    "pretest": "start mongod.exe --dbpath tests/data/db",
+    "test": "node node_modules/mocha/bin/mocha --recursive tests",
+    "test-cover": "node_modules/.bin/istanbul cover node_modules/mocha/bin/mocha --recursive tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BenoitClaveau/dambreaker-mongo.git"
+  },
+  "keywords": [
+    "qwebs",
+    "mongo",
+    "mongodb",
+    "client",
+    "web",
+    "database",
+    "promise"
+  ],
+  "author": {
+    "name": "Benoît Claveau",
+    "email": "benoit.claveau@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BenoitClaveau/dambreaker-mongo/issues"
+  },
+  "homepage": "https://github.com/BenoitClaveau/dambreaker-mongo"
+}

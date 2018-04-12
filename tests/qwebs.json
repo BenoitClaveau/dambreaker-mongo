@@ -1,0 +1,11 @@
+{
+    "services": "./services.json",
+    "mongo": {
+        "host": "localhost", 
+        "port": 27017, 
+        "database": "test"
+    },
+    "http": {
+        "port": 3100
+    }
+}
