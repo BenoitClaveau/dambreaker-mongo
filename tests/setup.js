@@ -29,7 +29,7 @@ class Setup {
             await qwebs.load();
             
             if (!mongo)  return
-            const config = await qwebs.resolve("$config");
+            const config = await qwebs.resolve("config");
             if (config.mongo.host !== "localhost") throw new Error("Inconherent mongo connectionString.");
             if (config.mongo.database !== "test") throw new Error("Inconherent mongo connectionString.");
 
