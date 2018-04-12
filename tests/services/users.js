@@ -8,8 +8,8 @@ const Readable = require('stream').Readable;
 const Rest = require("../../lib/services/rest");
 
 class Users extends Rest {
-	constructor($qwebs) {
-		super($qwebs, "users")
+	constructor(giveme) {
+		super(giveme, "users")
 	};
 
 	myHttpFindOne(context, stream, headers) {
