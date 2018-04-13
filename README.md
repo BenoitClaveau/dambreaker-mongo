@@ -1,5 +1,5 @@
-# dambreaker-mongo
-[Mongo](https://www.npmjs.com/package/mongodb) service for [dambreaker](https://www.npmjs.com/package/dambreaker).
+# damless-mongo
+[Mongo](https://www.npmjs.com/package/mongodb) service for [damless](https://www.npmjs.com/package/damless).
 
  [![NPM][npm-image]][npm-url]
  [![Build Status][travis-image]][travis-url]
@@ -7,7 +7,7 @@
 
 ## Features
 
-  * [dambreaker](https://www.npmjs.com/package/dambreaker)
+  * [damless](https://www.npmjs.com/package/damless)
   * [Mongo API](http://mongodb.github.io/node-mongodb-native/2.3/api/)
   * Singleton
 
@@ -17,9 +17,9 @@ return $mongo.db.then(db => {
 });
 ```
 
-### Add the mongo connection string in dambreaker.json
+### Add the mongo connection string in damless.json
 
-```dambreaker.json
+```damless.json
 {
 	"mongo": {
         "connectionString": "mongodb://localhost:27017/database"
@@ -27,12 +27,12 @@ return $mongo.db.then(db => {
 }
 ```
 
-### Inject the dambreaker mongo service
+### Inject the damless mongo service
 
 ```services.json
 {
   "services": [
-    { "name": "mongo", "location": "dambreaker-mongo" }
+    { "name": "mongo", "location": "damless-mongo" }
   ]
 }
 ```
@@ -40,9 +40,9 @@ return $mongo.db.then(db => {
 Or in javascript
 
 ```js
-const DamBreaker = require("dambreaker");
-const dambreaker = new DamBreaker();
-dambreaker.inject("mongo" ,"dambreaker-mongo");
+const DamLess = require("damless");
+const damless = new DamLess();
+damless.inject("mongo" ,"damless-mongo");
 ```
 
 ### Use REST api
@@ -50,7 +50,7 @@ dambreaker.inject("mongo" ,"dambreaker-mongo");
 ```js
 
 class Api {
-    constructor(mongo) {    //mongo service is injected by dambreaker DI
+    constructor(mongo) {    //mongo service is injected by damless DI
         super("<collectionName>", mongo);
     };
 ```
@@ -58,7 +58,7 @@ class Api {
 ### Override the default behaviour
 
 ```js
-const { CRUD } = require("dambreaker-mongo");
+const { CRUD } = require("damless-mongo");
 
 class Api extends CRUD {
   constructor(mongo) {
@@ -70,24 +70,24 @@ class Api extends CRUD {
 ## Installation
 
 ```bash
-$ npm install dambreaker-mongo
+$ npm install damless-mongo
 ```
 
 ## Test
 
-To run our tests, clone the dambreaker-mongo repo and install the dependencies.
+To run our tests, clone the damless-mongo repo and install the dependencies.
 
 ```bash
-$ git clone https://github.com/BenoitClaveau/dambreaker-mongo --depth 1
-$ cd dambreaker-mongo
+$ git clone https://github.com/BenoitClaveau/damless-mongo --depth 1
+$ cd damless-mongo
 $ npm install
 $ mongod --dbpath ./data/db
 $ node.exe "../node_modules/mocha/bin/mocha" tests
 ```
 
-[npm-image]: https://img.shields.io/npm/v/dambreaker-mongo.svg
-[npm-url]: https://npmjs.org/package/dambreaker-mongo
-[travis-image]: https://travis-ci.org/BenoitClaveau/dambreaker-mongo.svg?branch=master
-[travis-url]: https://travis-ci.org/BenoitClaveau/dambreaker-mongo
-[coveralls-image]: https://coveralls.io/repos/BenoitClaveau/dambreaker-mongo/badge.svg?branch=master&service=github
-[coveralls-url]: https://coveralls.io/github/BenoitClaveau/dambreaker-mongo?branch=master
+[npm-image]: https://img.shields.io/npm/v/damless-mongo.svg
+[npm-url]: https://npmjs.org/package/damless-mongo
+[travis-image]: https://travis-ci.org/BenoitClaveau/damless-mongo.svg?branch=master
+[travis-url]: https://travis-ci.org/BenoitClaveau/damless-mongo
+[coveralls-image]: https://coveralls.io/repos/BenoitClaveau/damless-mongo/badge.svg?branch=master&service=github
+[coveralls-url]: https://coveralls.io/github/BenoitClaveau/damless-mongo?branch=master

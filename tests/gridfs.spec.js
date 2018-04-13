@@ -1,5 +1,5 @@
 /*!
- * dambreaker-mongo
+ * damless-mongo
  * Copyright(c) 2018 Benoît Claveau <benoit.claveau@gmail.com>
  * MIT Licensed
  */

@@ -1,13 +1,13 @@
 {
-  "name": "dambreaker-mongo",
+  "name": "damless-mongo",
   "version": "1.0.1",
-  "description": "Mongo client for dambreaker",
+  "description": "Mongo client for damless",
   "main": "index.js",
   "dependencies": {
     "mongodb": "latest",
     "oups": "latest",
     "pump": "latest",
-    "dambreaker": "latest"
+    "damless": "latest"
   },
   "devDependencies": {
     "coveralls": "latest",
@@ -24,7 +24,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/BenoitClaveau/dambreaker-mongo.git"
+    "url": "https://github.com/BenoitClaveau/damless-mongo.git"
   },
   "keywords": [
     "qwebs",
@@ -41,7 +41,7 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/BenoitClaveau/dambreaker-mongo/issues"
+    "url": "https://github.com/BenoitClaveau/damless-mongo/issues"
   },
-  "homepage": "https://github.com/BenoitClaveau/dambreaker-mongo"
+  "homepage": "https://github.com/BenoitClaveau/damless-mongo"
 }
