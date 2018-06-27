@@ -6,7 +6,7 @@
 "use strict"
 
 const setup = require("./setup");
-const Qwebs = require("qwebs");
+const damless = require("damless");
 const expect = require("expect.js");
 const { inspect } = require("util");
 process.on('unhandledRejection', (reason, p) => {
@@ -19,8 +19,8 @@ describe("A suite for CRUD", () => {
     after(async () => await setup.stop())
 
     it("gridfs", async () => {
-        // const { qwebs } = setup;
-        // const client = await qwebs.resolve("$client");
+        // const { damless } = setup;
+        // const client = await damless.resolve("client");
         // const res = await client.get({ url: "http://localhost:3100/users", json: true });
         // expect(res.statusCode).to.be(200);
         // expect(res.body.length).to.be(2);

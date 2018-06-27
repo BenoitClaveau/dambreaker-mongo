@@ -1,10 +1,10 @@
 {
     "services": [
-        { "name": "$users", "location": "./services/users" }
+        { "name": "user", "location": "./services/users" }
     ],
     "http-routes": [
-        { "get": "/user", "service": "$users", "method": "myHttpFindOne", "auth": false },
-        { "get": "/users", "service": "$users", "method": "httpFind", "auth": false },
-        { "get": "/users2", "service": "$users", "method": "myHttpFind", "auth": false }
+        { "get": "/user", "service": "user", "method": "myHttpFindOne", "auth": false },
+        { "get": "/users", "service": "user", "method": "httpFind", "auth": false },
+        { "get": "/users2", "service": "user", "method": "myHttpFind", "auth": false }
     ]
 }

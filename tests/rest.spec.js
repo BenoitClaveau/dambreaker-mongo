@@ -6,7 +6,7 @@
 "use strict"
 
 const setup = require("./setup");
-const Qwebs = require("qwebs");
+const damless = require("damless");
 const expect = require("expect.js");
 const { inspect } = require("util");
 process.on('unhandledRejection', (reason, p) => {
@@ -19,50 +19,48 @@ describe("A suite for Rest", () => {
     after(async () => await setup.stop())
 
     it("find", async () => {
-        const { qwebs } = setup;
-        const client = await qwebs.resolve("$client");
+        const { damless } = setup;
+        const client = await damless.resolve("client");
         const res = await client.get({ url: "http://localhost:3100/users", json: true });
         expect(res.statusCode).to.be(200);
         expect(res.body.length).to.be(2);
     });
 
     it("custom find", async () => {
-        const { qwebs } = setup;
-        const client = await qwebs.resolve("$client");
+        const { damless } = setup;
+        const client = await damless.resolve("client");
         const res = await client.get({ url: "http://localhost:3100/users2", json: true });
         expect(res.statusCode).to.be(200);
         expect(res.body.length).to.be(6);
     });
 
     it("find with regexp", async () => {
-        const { qwebs } = setup;
-        const client = await qwebs.resolve("$client");
+        const { damless } = setup;
+        const client = await damless.resolve("client");
         const res = await client.get({ url: "http://localhost:3100/users?login=/^PA/ig", json: true });
         expect(res.statusCode).to.be(200);
         expect(res.body.length).to.be(2);
     });
 
     it("find with regexp 2", async () => {
-        const { qwebs } = setup;
-        const client = await qwebs.resolve("$client");
+        const { damless } = setup;
+        const client = await damless.resolve("client");
         const res = await client.get({ url: "http://localhost:3100/users?login=/^PA/", json: true });
         expect(res.statusCode).to.be(200);
         expect(res.body.length).to.be(0);
     });
 
     it("find with or", async () => {
-        const { qwebs } = setup;
-        const client = await qwebs.resolve("$client");
-        const res = await client.get({ url: "http://localhost:3100/users?login=/^he/||password=passw@rd", json: true });
-        expect(res.statusCode).to.be(200);
-        expect(res.body.length).to.be(0);
-    });
+        const { damless } = setup;
+        const client = await damless.resolve("client");
+        const res = await client.get({ url: "http://localhost:3100/users?login=/^PA/ig||password=passw@rd", json: true });
+        expect(res.body.length).to.be(3);
+    }).timeout(6000);
 
-    it("find with or", async () => {
-        const { qwebs } = setup;
-        const client = await qwebs.resolve("$client");
-        const res = await client.get({ url: "http://localhost:3100/users?password=passw@rd||address.city=/^P/ig", json: true });
-        expect(res.statusCode).to.be(200);
-        expect(res.body.length).to.be(4);
-    });
+    it("find with ()", async () => {
+        const { damless } = setup;
+        const client = await damless.resolve("client");
+        const res = await client.get({ url: "http://localhost:3100/users?(login=/^PA/ig||password=passw@rd)", json: true });
+        expect(res.body.length).to.be(3);
+    }).timeout(6000);
 });

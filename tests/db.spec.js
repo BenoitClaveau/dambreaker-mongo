@@ -19,13 +19,13 @@ describe("A suite for mongo", () => {
     after(async () => await setup.stop())
 
     it("connect", async () => {
-        const mongo = await setup.qwebs.resolve("$mongo");
+        const mongo = await setup.damless.resolve("mongo");
         let db = await mongo.connect();
         expect(db.databaseName).to.be("test");
     });
 
     it("find", async () => {
-        const mongo = await setup.qwebs.resolve("$mongo");
+        const mongo = await setup.damless.resolve("mongo");
         let db = await mongo.connect();
         const docs = await db.collection("users").find().toArray();
         expect(docs.length).to.be(2);

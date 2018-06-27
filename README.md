@@ -12,7 +12,7 @@
   * Singleton
 
 ```js
-return $mongo.db.then(db => {
+return mongo.db.then(db => {
   //db is a singleton Mongo Db instance
 });
 ```

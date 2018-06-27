@@ -6,30 +6,29 @@
 "use strict"
 
 const { Error } = require("oups");
-const Qwebs = require("qwebs");
+const damless = require("damless");
 const path = require("path");
 const { inspect } = require("util");
 
 class Setup {
 
     constructor() {
-        this.qwebs = new Qwebs({ dirname: __dirname });
+        this.damless = new damless({ dirname: __dirname });
     }
 
     async resolve(name) {
-        return await this.qwebs.resolve(name);
+        return await this.damless.resolve(name);
     }
 
     async run(options = {}) {
-        const { mongo = true, http = true } = options;
+        const { mongo = true } = options;
         try {
-            const { qwebs } = this;
-            if (mongo) await qwebs.inject("$mongo", path.join(__dirname, "..", "index"));
-            if (http) await qwebs.inject("$http", "qwebs-http");
-            await qwebs.load();
+            const { damless } = this;
+            if (mongo) await damless.inject("mongo", path.join(__dirname, "..", "index"));
+            await damless.start();
             
             if (!mongo)  return
-            const config = await qwebs.resolve("config");
+            const config = await damless.resolve("config");
             if (config.mongo.host !== "localhost") throw new Error("Inconherent mongo connectionString.");
             if (config.mongo.database !== "test") throw new Error("Inconherent mongo connectionString.");
 
@@ -44,16 +43,16 @@ class Setup {
     };
 
     async schema() {
-        const { qwebs } = this;
-        let mongo = await qwebs.resolve("$mongo");
+        const { damless } = this;
+        let mongo = await damless.resolve("mongo");
         let db = await mongo.connect();
         await db.createCollection("users");
         await db.ensureIndex("users", { "login": 1 });
     };
     
     async data() {
-        const { qwebs } = this;
-        const mongo = await qwebs.resolve("$mongo");
+        const { damless } = this;
+        const mongo = await damless.resolve("mongo");
         const db = await mongo.connect();
 
         [
@@ -70,15 +69,15 @@ class Setup {
     };
 
     async clear() {
-        const { qwebs } = this;
-        let mongo = await qwebs.resolve("$mongo");
+        const { damless } = this;
+        let mongo = await damless.resolve("mongo");
         let db = await mongo.connect();
         await db.collection("users").remove();
     };
 
     async stop() {
-        const { qwebs } = this;
-        await qwebs.unload();
+        const { damless } = this;
+        await damless.stop();
     }
 
 };

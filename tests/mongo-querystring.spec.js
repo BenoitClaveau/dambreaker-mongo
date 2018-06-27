@@ -6,7 +6,7 @@
 "use strict"
 
 const setup = require("./setup");
-const Qwebs = require("qwebs");
+const damless = require("damless");
 const qs0 = require("qs");
 const expect = require("expect.js");
 const { inspect } = require("util");
@@ -21,7 +21,7 @@ describe("A suite for Rest", () => {
     after(async () => await setup.stop())
 
     it("parse", async () => {
-        const qs = await setup.resolve("$mongo-querystring");
+        const qs = await setup.resolve("mongo-querystring");
         const query1 = qs.parse("name=peter&name=paul");
         const query2 = qs.parse("person.name=/^paul/&name=peter&");
 
@@ -29,7 +29,7 @@ describe("A suite for Rest", () => {
     }).timeout(50000);
 
     it("parse", async () => {
-        const qs = await setup.resolve("$mongo-querystring");
+        const qs = await setup.resolve("mongo-querystring");
         const query = qs.parse("name=/^pa/");
         expect(query.filter).to.eql({
             price: {
@@ -40,7 +40,7 @@ describe("A suite for Rest", () => {
     });
 
     // it("parse", async () => {
-    //     const qs = await setup.resolve("$mongo-querystring");
+    //     const qs = await setup.resolve("mongo-querystring");
     //     const query = qs.parse("price>10||price<5");
     //     expect(query.filter).to.eql({
     //         $or: [{

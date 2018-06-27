@@ -1,0 +1,10 @@
+{
+    "tasks": [
+        {
+            "label": "pretest",
+            "type": "npm",
+            "script": "pretest",
+            "problemMatcher": []
+        }
+    ]
+}
