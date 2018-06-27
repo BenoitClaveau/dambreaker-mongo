@@ -14,9 +14,9 @@
         "preLaunchTask": "pretest",
         "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
         "args": [
-          "${workspaceRoot}/tests/rest.spec.js",
-          "--grep",
-          "find with or",
+          "${workspaceRoot}/tests/**.spec.js",
+        //   "--grep",
+        //   "find with or",
         ],
         "cwd": "${workspaceRoot}"
       }

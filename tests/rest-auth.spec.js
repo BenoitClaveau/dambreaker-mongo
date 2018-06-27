@@ -13,7 +13,7 @@ process.on('unhandledRejection', (reason, p) => {
     console.error('Unhandled Rejection at:', p, 'reason:', inspect(reason));
 });
 
-describe("A suite for CRUDAuth", () => {
+describe("A suite for rest-auth", () => {
 
     // before(async () => await setup.run())
     // after(async () => await setup.stop())
