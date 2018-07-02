@@ -1,53 +1,53 @@
 {
-  "name": "damless-mongo",
-  "version": "0.0.2",
-  "description": "Mongo client for damless",
-  "main": "index.js",
-  "dependencies": {
-    "mongodb": "latest",
-    "oups": "latest",
-    "pump": "latest",
-    "damless": "latest"
-  },
-  "devDependencies": {
-    "coveralls": "latest",
-    "expect.js": "latest",
-    "istanbul": "latest",
-    "mocha": "latest",
-    "nyc": "latest",
-    "chalk": "latest"
-  },
-  "scripts": {
-    "mongod": "start mongod.exe --dbpath ./tests/data/db",
-    "pretest": "start mongod.exe --dbpath ./tests/data/db",
-    "test": "nyc --reporter=text --reporter=html mocha --recursive tests/**/*.spec.js",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/BenoitClaveau/damless-mongo.git"
-  },
-  "keywords": [
-    "damless",
-    "mongo",
-    "mongodb",
-    "client",
-    "web",
-    "database",
-    "promise"
-  ],
-  "author": {
-    "name": "Benoît Claveau",
-    "email": "benoit.claveau@gmail.com"
-  },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/BenoitClaveau/damless-mongo/issues"
-  },
-  "homepage": "https://github.com/BenoitClaveau/damless-mongo",
-  "nyc": {
-    "include": [
-        "lib/**/*.js"
-    ]
-}
+    "name": "damless-mongo",
+    "version": "0.0.2",
+    "description": "Mongo client for damless",
+    "main": "index.js",
+    "dependencies": {
+        "mongodb": "latest",
+        "oups": "latest",
+        "pump": "latest",
+        "damless": "latest"
+    },
+    "devDependencies": {
+        "coveralls": "latest",
+        "expect.js": "latest",
+        "istanbul": "latest",
+        "mocha": "latest",
+        "nyc": "latest",
+        "chalk": "latest"
+    },
+    "scripts": {
+        "mongod": "start mongod.exe --dbpath ./tests/data/db",
+        "pretest": "start mongod.exe --dbpath ./tests/data/db",
+        "test": "nyc --reporter=text --reporter=html mocha --recursive tests/**/*.spec.js",
+        "coverage": "nyc report --reporter=text-lcov | coveralls"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/BenoitClaveau/damless-mongo.git"
+    },
+    "keywords": [
+        "damless",
+        "mongo",
+        "mongodb",
+        "client",
+        "web",
+        "database",
+        "promise"
+    ],
+    "author": {
+        "name": "Benoît Claveau",
+        "email": "benoit.claveau@gmail.com"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/BenoitClaveau/damless-mongo/issues"
+    },
+    "homepage": "https://github.com/BenoitClaveau/damless-mongo",
+    "nyc": {
+        "include": [
+            "lib/**/*.js"
+        ]
+    }
 }
