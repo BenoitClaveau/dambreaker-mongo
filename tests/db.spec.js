@@ -13,9 +13,9 @@ process.on('unhandledRejection', (reason, p) => {
     console.error('Unhandled Rejection at:', p, 'reason:', inspect(reason));
 });
   
-describe("A suite for mongo", () => {
+describe("A suite for mongo db", () => {
 
-    before(async () => await setup.run())
+    before(async () => await setup.run({ http: false }))
     after(async () => await setup.stop())
 
     it("connect", async () => {
@@ -28,6 +28,6 @@ describe("A suite for mongo", () => {
         const mongo = await setup.damless.resolve("mongo");
         let db = await mongo.connect();
         const docs = await db.collection("users").find().toArray();
-        expect(docs.length).to.be(2);
-    });
+        expect(docs.length).to.be(6);
+    }).timeout(5000);
 });

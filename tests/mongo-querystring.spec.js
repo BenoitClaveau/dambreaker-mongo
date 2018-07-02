@@ -6,8 +6,6 @@
 "use strict"
 
 const setup = require("./setup");
-const damless = require("damless");
-const qs0 = require("qs");
 const expect = require("expect.js");
 const { inspect } = require("util");
 process.on('unhandledRejection', (reason, p) => {
@@ -25,7 +23,7 @@ describe("A suite for mongo-querystring", () => {
         const query = qs.parse("name=/^pa/");
         expect(query.filter).to.eql({
             name: {
-                $option: "",
+                $options: "",
                 "$regex": "^pa"
             }
         });

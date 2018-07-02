@@ -14,13 +14,14 @@
     "expect.js": "latest",
     "istanbul": "latest",
     "mocha": "latest",
+    "nyc": "latest",
     "chalk": "latest"
   },
   "scripts": {
     "mongod": "start mongod.exe --dbpath tests/data/db",
     "pretest": "start mongod.exe --dbpath tests/data/db",
-    "test": "node node_modules/mocha/bin/mocha --recursive tests",
-    "test-cover": "node_modules/.bin/istanbul cover node_modules/mocha/bin/mocha --recursive tests"
+    "test": "nyc --reporter=text --reporter=html mocha --recursive tests/**/*.spec.js",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -43,5 +44,10 @@
   "bugs": {
     "url": "https://github.com/BenoitClaveau/damless-mongo/issues"
   },
-  "homepage": "https://github.com/BenoitClaveau/damless-mongo"
+  "homepage": "https://github.com/BenoitClaveau/damless-mongo",
+  "nyc": {
+    "include": [
+        "lib/**/*.js"
+    ]
+}
 }

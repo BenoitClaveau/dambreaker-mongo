@@ -6,4 +6,5 @@ services:
 sudo: required
 before_script:
   - sleep 15
-script: "npm run-script test-cover"
+script: "npm test"
+after_success: "npm run coverage"

@@ -24,7 +24,7 @@ describe("A suite for Rest", () => {
         const res = await client.get({ url: "http://localhost:3100/users", json: true });
         expect(res.statusCode).to.be(200);
         expect(res.body.length).to.be(6);
-    });
+    }).timeout(5000);
 
     it("custom find", async () => {
         const { damless } = setup;
