@@ -19,7 +19,7 @@
     },
     "scripts": {
         "mongod": "start mongod.exe --dbpath ./tests/data/db",
-        "pretest": "start mongod.exe --dbpath ./tests/data/db",
+        "pretest": "start mongod.exe",
         "test": "nyc --reporter=text --reporter=html mocha --recursive tests/**/*.spec.js",
         "coverage": "nyc report --reporter=text-lcov | coveralls"
     },

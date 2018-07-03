@@ -8,14 +8,8 @@
 ## Features
 
   * [damless](https://www.npmjs.com/package/damless)
-  * [Mongo API](http://mongodb.github.io/node-mongodb-native/2.3/api/)
-  * Singleton
+  * [Mongo API](http://mongodb.github.io/node-mongodb-native/3.1/api/)
 
-```js
-return mongo.db.then(db => {
-  //db is a singleton Mongo Db instance
-});
-```
 
 ### Add the mongo connection string in damless.json
 
@@ -27,7 +21,7 @@ return mongo.db.then(db => {
 }
 ```
 
-### Inject the damless mongo service
+### Inject damless-mongo service
 
 ```services.json
 {
@@ -42,29 +36,16 @@ Or in javascript
 ```js
 const DamLess = require("damless");
 const damless = new DamLess();
-damless.inject("mongo" ,"damless-mongo");
+damless.inject("mongo", "damless-mongo");
 ```
 
-### Use REST api
+### Create a REST api
 
 ```js
-
 class Api {
     constructor(mongo) {    //mongo service is injected by damless DI
         super("<collectionName>", mongo);
     };
-```
-
-### Override the default behaviour
-
-```js
-const { CRUD } = require("damless-mongo");
-
-class Api extends CRUD {
-  constructor(mongo) {
-    this.mongo = mongo;
-  };
-};
 ```
 
 ## Installation
