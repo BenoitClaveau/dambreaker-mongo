@@ -4,4 +4,6 @@
  * MIT Licensed
  */
 module.exports = require('./lib/damless-mongo');
-module.exports.Services = require('./lib/services');
+module.exports.Crud = require('./lib/services/crud');
+module.exports.Http = require('./lib/services/http');
+module.exports.MongoQueryString = require('./lib/services/mongo-querystring');

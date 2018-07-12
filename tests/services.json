@@ -1,10 +1,15 @@
 {
     "services": [
+        { "name": "json", "location": "./services/json" },
         { "name": "user", "location": "./services/users" }
     ],
     "http-routes": [
-        { "get": "/user", "service": "user", "method": "myHttpFindOne", "auth": false },
+        { "get": "/user/:id", "service": "user", "method": "httpFindOne", "auth": false },
         { "get": "/users", "service": "user", "method": "httpFind", "auth": false },
-        { "get": "/users2", "service": "user", "method": "myHttpFind", "auth": false }
+        { "post": "/user", "service": "user", "method": "httpInsertOne", "auth": false },
+        { "put": "/user/:id", "service": "user", "method": "httpSaveOne", "auth": false },
+        { "patch": "/user/:id", "service": "user", "method": "httpUpdateOne", "auth": false },
+        { "delete": "/user/:id", "service": "user", "method": "httpDeleteOne", "auth": false },
+        { "get": "/users2", "service": "user", "method": "customHttpFind", "auth": false }
     ]
 }

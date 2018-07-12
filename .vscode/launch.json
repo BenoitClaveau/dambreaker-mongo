@@ -1,24 +1,20 @@
 {
     "version": "0.2.0",
     "configurations": [
-      {
-        "type": "node",
-        "request": "launch",
-        "name": "Server",
-        "program": "${workspaceRoot}/server.js"
-      },
-      {
-        "type": "node",
-        "request": "launch",
-        "name": "Tests",
-        "preLaunchTask": "pretest",
-        "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
-        "args": [
-          "${workspaceRoot}/tests/**.spec.js",
-        //   "--grep",
-        //   "find with or",
-        ],
-        "cwd": "${workspaceRoot}"
-      }
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Tests",
+            "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
+            "cwd": "${workspaceRoot}",
+            "args": [
+                "--color",
+                "--recursive",
+                "--grep",
+                "delete",
+                "${workspaceRoot}/tests/**.spec.js"
+            ],
+            "preLaunchTask": "mongo",
+        }
     ]
-  }
+}

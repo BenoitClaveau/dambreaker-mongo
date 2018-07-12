@@ -7,11 +7,65 @@
 
 ## Features
 
-  * [damless](https://www.npmjs.com/package/damless)
-  * [Mongo API](http://mongodb.github.io/node-mongodb-native/3.1/api/)
+ * [damless](https://www.npmjs.com/package/damless)
+ * [Mongo API](http://mongodb.github.io/node-mongodb-native/3.1/api/)
+
+## REST api
+
+ * GET/:id                          => httpFindOne
+ * GET/?query-string as filter      => httpFind
+ * POST                             => httpInsertOne
+ * PUT/:id                          => httpSaveOne
+ * PATCH/:id                        => httpUpdateOne with $set
+ * DELETE /:id                      => httpDeleteOne
+
+## Create an api
+
+```js
+const { Http } = require("damless-mongo");
+class Api extends Http {
+
+    constructor(giveme) {    //giveme is the dependencies injection service used by damless
+        super(giveme, "<collectionName>");
+    };
+
+    ...
+}
+```
+
+## Cutomize your api
+
+```js
+const { Http } = require("damless-mongo");
+class Api extends Http {
+
+    constructor(giveme) {    //giveme is the dependencies injection service used by damless
+        super(giveme, "<collectionName>");
+    };
+
+    //override the default httpFind an use Crud primitives
+    async httpFind(context, stream, headers) {
+        this.findWords(context.query.q).pipe(stream);
+    }
+}
+```
+
+## Use lower level 
+
+```js
+const { Crud } = require("damless-mongo");
+class Api extends Crud {
+
+    constructor(giveme) {    //giveme is the dependencies injection service used by damless
+        super(giveme, "<collectionName>");
+    };
+
+    ...
+}
+```
 
 
-### Add the mongo connection string in damless.json
+## Add the mongo connection string in damless.json
 
 ```damless.json
 {
@@ -21,7 +75,7 @@
 }
 ```
 
-### Inject damless-mongo service
+## Inject damless-mongo service
 
 ```services.json
 {
@@ -37,15 +91,6 @@ Or in javascript
 const DamLess = require("damless");
 const damless = new DamLess();
 damless.inject("mongo", "damless-mongo");
-```
-
-### Create a REST api
-
-```js
-class Api {
-    constructor(mongo) {    //mongo service is injected by damless DI
-        super("<collectionName>", mongo);
-    };
 ```
 
 ## Installation

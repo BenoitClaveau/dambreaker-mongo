@@ -1,9 +1,9 @@
 {
     "tasks": [
         {
-            "label": "pretest",
+            "label": "mongo",
             "type": "npm",
-            "script": "pretest",
+            "script": "mongo",
             "problemMatcher": []
         }
     ]

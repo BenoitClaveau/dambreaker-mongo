@@ -1,6 +1,6 @@
 {
     "name": "damless-mongo",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Mongo client for damless",
     "main": "index.js",
     "dependencies": {
@@ -18,7 +18,7 @@
         "chalk": "latest"
     },
     "scripts": {
-        "mongod": "start mongod.exe --dbpath ./tests/data/db",
+        "mongo": "start mongod --dbpath tests/data/db",
         "test": "nyc --reporter=text --reporter=html mocha --recursive tests/**/*.spec.js",
         "coverage": "nyc report --reporter=text-lcov | coveralls"
     },

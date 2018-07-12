@@ -12,7 +12,6 @@ process.on('unhandledRejection', (reason, p) => {
     console.error('Unhandled Rejection at:', p, 'reason:', inspect(reason));
 });
 
-
 describe("A suite for mongo-querystring", () => {
 
     before(async () => await setup.run({ mongo: false, http: false }))
