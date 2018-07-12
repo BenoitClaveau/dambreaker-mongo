@@ -161,7 +161,6 @@ describe("A suite for http", () => {
             json: true,
         });
         expect(res2.body.ok).to.be(1);
-        console.log(res.body._id)
         try {
             const res3 = await client.get({
                 url: `http://localhost:3100/user/5b477805630b3c121899a796`,
