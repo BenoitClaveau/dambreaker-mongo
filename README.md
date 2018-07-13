@@ -12,12 +12,14 @@
 
 ## REST api
 
- * GET/:id                          => httpFindOne
- * GET/?query-string as filter      => httpFind
- * POST                             => httpInsertOne
- * PUT/:id                          => httpSaveOne
- * PATCH/:id                        => httpUpdateOne with $set
- * DELETE /:id                      => httpDeleteOne
+Method | Param | DamLess method
+ --- | --- | ---
+GET | /:id | httpFindOne
+GET | /?<querystring> | httpFind
+POST | | httpInsertOne
+PUT | /:id | httpSaveOne
+PATCH | /:id | httpUpdateOne with $set
+DELETE | /:id | httpDeleteOne
 
 ## Create an api
 
@@ -25,13 +27,82 @@
 const { Http } = require("damless-mongo");
 class Api extends Http {
 
-    constructor(giveme) {    //giveme is the dependencies injection service used by damless
+    //giveme is the dependency injection service used by damless
+    constructor(giveme) {
         super(giveme, "<collectionName>");
     };
 
     ...
 }
 ```
+
+## Http methods
+
+Method | Description
+ --- | --- 
+httpFindOne | 
+httpFind |
+httpInsertOne |
+httpInsertMany |
+httpSaveOne |
+httpUpdateOne |
+httpSaveMany |
+httpUpdateMany |
+httpDeleteOne |
+httpDeleteMany |
+httpCount |
+httpAggregate |
+
+## Stream methods
+
+Method | Description
+ --- | --- 
+saveOne | 
+save |
+insertOne |
+insert |
+updateOne |
+update |
+replaceOne |
+deleteOne |
+delete |
+findOne |
+find |
+aggregate |
+count |
+
+## Mongo api methods
+
+Method | Description
+ --- | --- 
+mongoInsertOne |
+mongoInsertMany |
+mongoAggregate |
+mongoBulkWrite |
+mongoCreateIndex |
+mongoCreateIndexes |
+mongoCount |
+mongoCreateIndexes |
+mongoDeleteOne |
+mongoDeleteMany |
+mongoDistinct |
+mongoDrop |
+mongoDropIfExists |
+mongoDropIndex |
+mongoDropIndexes |
+mongoFindOne |
+mongoFind |
+mongoFindOneAndDelete |
+mongoFindOneAndReplace |
+mongoFindOneAndUpdate |
+mongoGeoHaystackSearch |
+mongoGeoNear |
+mongoGroup |
+mongoMapReduce |
+mongoReplaceOne |
+mongoSave |
+mongoUpdateOne |
+mongoUpdateMany |
 
 ## Cutomize your api
 
@@ -39,7 +110,8 @@ class Api extends Http {
 const { Http } = require("damless-mongo");
 class Api extends Http {
 
-    constructor(giveme) {    //giveme is the dependencies injection service used by damless
+    //giveme is the dependency injection service used by damless
+    constructor(giveme) {
         super(giveme, "<collectionName>");
     };
 
@@ -47,20 +119,6 @@ class Api extends Http {
     async httpFind(context, stream, headers) {
         this.findWords(context.query.q).pipe(stream);
     }
-}
-```
-
-## Use lower level 
-
-```js
-const { Crud } = require("damless-mongo");
-class Api extends Crud {
-
-    constructor(giveme) {    //giveme is the dependencies injection service used by damless
-        super(giveme, "<collectionName>");
-    };
-
-    ...
 }
 ```
 
