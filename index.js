@@ -4,6 +4,10 @@
  * MIT Licensed
  */
 module.exports = require('./lib/damless-mongo');
-module.exports.Crud = require('./lib/services/crud');
-module.exports.Http = require('./lib/services/http');
-module.exports.MongoQueryString = require('./lib/services/mongo-querystring');
+module.exports.Aggregate = require('./lib/services').Aggregate;
+module.exports.Crud = require('./lib/services').Crud;
+module.exports.Find = require('./lib/services').Find;
+module.exports.Http = require('./lib/services').Http;
+module.exports.MongoQueryString = require('./lib/services').MongoQueryString;
+module.exports.streamify = require('./lib/core/streamify').streamify;
+module.exports.streamifyOne = require('./lib/core/streamify').streamifyOne;
