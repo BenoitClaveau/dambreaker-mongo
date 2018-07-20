@@ -9,5 +9,5 @@ module.exports.Crud = require('./lib/services').Crud;
 module.exports.Find = require('./lib/services').Find;
 module.exports.Http = require('./lib/services').Http;
 module.exports.MongoQueryString = require('./lib/services').MongoQueryString;
-module.exports.transform = require('./lib/core/transform').transform;
-module.exports.streamify = require('./lib/core/transform').streamify;
+module.exports.transform = require('./lib/core/streamify').transform;
+module.exports.streamify = require('./lib/core/streamify').streamify;
