@@ -11,3 +11,4 @@ module.exports.Http = require('./lib/services').Http;
 module.exports.MongoQueryString = require('./lib/services').MongoQueryString;
 module.exports.transform = require('./lib/core/streamify').transform;
 module.exports.streamify = require('./lib/core/streamify').streamify;
+module.exports.noop = require('./lib/core/streamify').noop;
