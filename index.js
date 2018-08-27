@@ -3,12 +3,26 @@
  * Copyright(c) 2018 Benoît Claveau <benoit.claveau@gmail.com>
  * MIT Licensed
  */
-module.exports = require('./lib/damless-mongo');
-module.exports.Aggregate = require('./lib/services').Aggregate;
-module.exports.Crud = require('./lib/services').Crud;
-module.exports.Find = require('./lib/services').Find;
-module.exports.Http = require('./lib/services').Http;
-module.exports.MongoQueryString = require('./lib/services').MongoQueryString;
-module.exports.transform = require('./lib/core/streamify').transform;
-module.exports.streamify = require('./lib/core/streamify').streamify;
-module.exports.noop = require('./lib/core/streamify').noop;
+const DamlessMongo = require('./lib/damless-mongo');
+const {
+    Aggregate,
+    Crud,
+    Find,
+    Http,
+    MongoQueryString,
+} = require('./lib/services');
+const {
+    transform,
+    streamify,
+    noop,
+} = require('./lib/core/streamify');
+
+module.exports = DamlessMongo;
+module.exports.Aggregate = Aggregate;
+module.exports.Crud = Crud;
+module.exports.Find = Find;
+module.exports.Http = Http;
+module.exports.MongoQueryString = MongoQueryString;
+module.exports.transform = transform;
+module.exports.streamify = streamify;
+module.exports.noop = noop;
