@@ -153,6 +153,7 @@ describe("A suite for http", () => {
                 address: { city: "Lyon" }
             },
         });
+        expect(res.body._id).not.to.be(undefined)
         expect(res.body.login).to.be("delete");
         expect(res.body.password).to.be("l001");
         expect(res.body.address.city).to.be("Lyon");

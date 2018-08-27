@@ -47,7 +47,6 @@ class Setup {
         let mongo = await damless.resolve("mongo");
         let db = await mongo.connect();
         await db.createCollection("users");
-        await db.ensureIndex("users", { "login": 1 });
     };
     
     async data() {
@@ -72,7 +71,7 @@ class Setup {
         const { damless } = this;
         let mongo = await damless.resolve("mongo");
         let db = await mongo.connect();
-        await db.collection("users").remove();
+        await db.collection("users").deleteMany();
     };
 
     async stop() {
