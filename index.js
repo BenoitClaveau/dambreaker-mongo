@@ -15,7 +15,9 @@ const {
     transform,
     streamify,
     noop,
-} = require('./lib/core/streamify');
+    getFirst,
+    getAll
+} = require('./lib/core');
 
 module.exports = DamlessMongo;
 module.exports.Aggregate = Aggregate;
@@ -25,4 +27,6 @@ module.exports.Http = Http;
 module.exports.MongoQueryString = MongoQueryString;
 module.exports.transform = transform;
 module.exports.streamify = streamify;
+module.exports.getFirst = getFirst;
+module.exports.getAll = getAll;
 module.exports.noop = noop;
