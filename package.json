@@ -1,12 +1,11 @@
 {
     "name": "damless-mongo",
-    "version": "0.0.12",
+    "version": "0.0.13",
     "description": "Mongo client for damless",
     "main": "index.js",
     "dependencies": {
         "mongodb": "latest",
         "oups": "latest",
-        "pump": "latest",
         "damless": "latest",
         "qs": "latest"
     },
