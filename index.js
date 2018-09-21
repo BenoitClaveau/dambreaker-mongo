@@ -17,7 +17,7 @@ const {
     noop,
     getFirst,
     getAll,
-    theEnd
+    ending
 } = require('./lib/core');
 
 module.exports = DamlessMongo;
@@ -30,5 +30,5 @@ module.exports.transform = transform;
 module.exports.streamify = streamify;
 module.exports.getFirst = getFirst;
 module.exports.getAll = getAll;
-module.exports.theEnd = theEnd;
+module.exports.ending = ending;
 module.exports.noop = noop;
