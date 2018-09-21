@@ -1,6 +1,6 @@
 {
     "name": "damless-mongo",
-    "version": "0.0.14",
+    "version": "0.0.15",
     "description": "Mongo client for damless",
     "main": "index.js",
     "dependencies": {
