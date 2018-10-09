@@ -14,7 +14,7 @@ process.on('unhandledRejection', (reason, p) => {
 
 describe("A suite for http", () => {
 
-    before(async () => await setup.run())
+    before(async function() {  this.timeout(10000); await setup.run(); });
     after(async () => await setup.stop())
 
     it("get", async () => {

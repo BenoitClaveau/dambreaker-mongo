@@ -1,2 +1,5 @@
-/node_modules
-/tests/data/db/*
+node_modules/
+tests/data/db/*
+coverage/
+package-lock.json
+.nyc_output/

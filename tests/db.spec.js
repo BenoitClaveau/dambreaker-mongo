@@ -14,8 +14,7 @@ process.on('unhandledRejection', (reason, p) => {
 });
   
 describe("A suite for mongo db", () => {
-
-    before(async () => await setup.run({ http: false }))
+    before(async function() {  this.timeout(10000); await setup.run({ http: false }); });
     after(async () => await setup.stop())
 
     it("connect", async () => {

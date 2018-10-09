@@ -14,7 +14,7 @@ process.on('unhandledRejection', (reason, p) => {
 
 describe("A suite for mongo-querystring", () => {
 
-    before(async () => await setup.run({ mongo: false, http: false }))
+    before(async function() {  this.timeout(10000); await setup.run({ mongo: false, http: false }); });
     after(async () => await setup.stop())
 
     it("parse regexp", async () => {

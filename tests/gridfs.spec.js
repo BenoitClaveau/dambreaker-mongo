@@ -13,9 +13,9 @@ process.on('unhandledRejection', (reason, p) => {
     console.error('Unhandled Rejection at:', p, 'reason:', inspect(reason));
 });
 
-describe("A suite for CRUD", () => {
+describe("A suite for GridFS", () => {
 
-    before(async () => await setup.run())
+    before(async function() {  this.timeout(10000); await setup.run(); });
     after(async () => await setup.stop())
 
     it("gridfs", async () => {
