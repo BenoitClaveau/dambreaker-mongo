@@ -17,17 +17,6 @@ describe("A suite for mongo-querystring", () => {
     before(async function() {  this.timeout(10000); await setup.run({ mongo: false, http: false }); });
     after(async () => await setup.stop())
 
-    it("parse regexp", async () => {
-        const qs = await setup.resolve("mongo-querystring");
-        const query = qs.parse("name=/^pa/");
-        expect(query.filter).to.eql({
-            name: {
-                $options: "",
-                "$regex": "^pa"
-            }
-        });
-    });
-
     it("parse greater", async () => {
         const qs = await setup.resolve("mongo-querystring");
         const query = qs.parse("price>10");
@@ -49,6 +38,64 @@ describe("A suite for mongo-querystring", () => {
                 }, {
                     price: {
                         $lt: 5
+                    }
+                }
+            ]
+        });
+    });
+
+    it("parse or", async () => {
+        const qs = await setup.resolve("mongo-querystring");
+        const query = qs.parse("price>10||price<5");
+        expect(query.filter).to.eql({
+            $or: [{
+                    price: {
+                        $gt: 10
+                    },
+                }, {
+                    price: {
+                        $lt: 5
+                    }
+                }
+            ]
+        });
+    });
+
+    it("parse regexp", async () => {
+        const qs = await setup.resolve("mongo-querystring");
+        const query = qs.parse("name=/^pa/");
+        expect(query.filter).to.eql({
+            name: {
+                $options: "",
+                $regex: "^pa"
+            }
+        });
+    });
+
+    it("parse regexp with undefined expression", async () => {
+        const qs = await setup.resolve("mongo-querystring");
+        const query = qs.parse("name=/^undefined/");
+        expect(query.filter).to.eql({
+            name: {
+                $options: "",
+                $regex: "^undefined"
+            }
+        });
+    });
+
+    it("parse or with regex", async () => {
+        const qs = await setup.resolve("mongo-querystring");
+        const query = qs.parse("email=/^ben/ig||firstName=/^ben/ig");
+        expect(query.filter).to.eql({
+            $or: [{
+                email: {
+                        $options:"ig",
+                        $regex: "^ben"
+                    },
+                }, {
+                    firstName: {
+                        $options:"ig",
+                        $regex: "^ben"
                     }
                 }
             ]
