@@ -8,6 +8,7 @@
 const setup = require("./setup");
 const expect = require("expect.js");
 const { inspect } = require("util");
+const querystring = require('querystring');
 process.on('unhandledRejection', (reason, p) => {
     console.error('Unhandled Rejection at:', p, 'reason:', inspect(reason));
 });
@@ -99,6 +100,49 @@ describe("A suite for mongo-querystring", () => {
                     }
                 }
             ]
+        });
+    });
+
+    it("parse array", async () => {
+        const qs = await setup.resolve("mongo-querystring");
+        const query = qs.parse("name[0]=1&name[1]=32");
+        expect(query.filter).to.eql({
+            name: [1,32]
+        });
+    });
+
+    it("parse array", async () => {
+        const qs = await setup.resolve("mongo-querystring");
+        const query = qs.parse("name=1&name=32&name=8");
+        expect(query.filter).to.eql({
+            name: [1,32,8]
+        });
+    });
+
+    it("parse array", async () => {
+        const qs = await setup.resolve("mongo-querystring");
+        const query = qs.parse("name[]=1&name[]=32&name[]=8");
+        expect(query.filter).to.eql({
+            name: [1,32,8]
+        });
+    });
+
+    it("parse array without id", async () => {
+        const qs = await setup.resolve("mongo-querystring");
+        const query = qs.parse("name[0]=1&name[0]=32&name[1]=8");
+        expect(query.filter).to.eql({
+            name: [[1,32],8]
+        });
+    });
+
+    it("parse array", async () => {
+        const qs = await setup.resolve("mongo-querystring");
+        const str = querystring.stringify({
+            names: ["pierre", "paul", "jacques"]
+        });
+        const query = qs.parse(str);
+        expect(query.filter).to.eql({
+            names: ["pierre", "paul", "jacques"]
         });
     });
 });
