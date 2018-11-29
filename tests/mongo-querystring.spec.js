@@ -88,11 +88,12 @@ describe("A suite for mongo-querystring", () => {
         const qs = await setup.resolve("mongo-querystring");
         const query = qs.parse("email=/^ben/ig||firstName=/^ben/ig");
         expect(query.filter).to.eql({
-            $or: [{
-                email: {
+            $or: [
+                {
+                    email: {
                         $options:"ig",
                         $regex: "^ben"
-                    },
+                    }
                 }, {
                     firstName: {
                         $options:"ig",
@@ -101,6 +102,28 @@ describe("A suite for mongo-querystring", () => {
                 }
             ]
         });
+    });
+
+    it("parse multiple or with regex", async () => {
+        const qs = await setup.resolve("mongo-querystring");
+        const query = qs.parse("role=client&(email=/^ben/ig||firstName=/^ben/ig)&limit=8");
+        expect(query.filter).to.eql({
+            $or: [
+                {
+                    email: {
+                        $options:"ig",
+                        $regex: "^ben"
+                    }
+                }, {
+                    firstName: {
+                        $options:"ig",
+                        $regex: "^ben"
+                    }
+                }
+            ],
+            role: "client"
+        });
+        expect(query.limit).to.be(8);
     });
 
     it("parse array", async () => {

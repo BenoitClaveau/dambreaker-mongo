@@ -11,7 +11,7 @@
                 "--color",
                 "--recursive",
                 "--grep",
-                "parse array",
+                "parse multiple or with regex",
                 "${workspaceRoot}/tests/**.spec.js"
             ],
             "preLaunchTask": "mongo",
