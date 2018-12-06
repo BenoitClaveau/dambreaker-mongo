@@ -11,10 +11,14 @@
                 "--color",
                 "--recursive",
                 "--grep",
-                "parse multiple or with regex",
+                "user by city",
                 "${workspaceRoot}/tests/**.spec.js"
             ],
             "preLaunchTask": "mongo",
+            "skipFiles": [
+                "<node_internals>/**/*.js",
+                "${workspaceFolder}/node_modules/core-js/**/*.js"
+            ]
         }
     ]
 }

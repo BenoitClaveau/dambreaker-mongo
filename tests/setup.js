@@ -6,14 +6,17 @@
 "use strict"
 
 const { Error } = require("oups");
-const damless = require("damless");
+const DamLess = require("damless");
 const path = require("path");
 const { inspect } = require("util");
 
 class Setup {
 
     constructor() {
-        this.damless = new damless({ dirname: __dirname });
+        this.damless = 
+            new DamLess()
+                .cwd(__dirname)
+                .config("./damless.json");
     }
 
     async resolve(name) {
@@ -24,7 +27,7 @@ class Setup {
         const { mongo = true } = options;
         try {
             const { damless } = this;
-            if (mongo) await damless.inject("mongo", path.join(__dirname, "..", "index"));
+            if (mongo) damless.inject("mongo", path.join(__dirname, "..", "index"));
             await damless.start();
             
             if (!mongo)  return
