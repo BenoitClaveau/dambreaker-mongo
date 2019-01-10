@@ -4,6 +4,9 @@
  * MIT Licensed
 */
 const Http = require("../../lib/services/http");
+const { promisify } = require("util");
+const { pipeline } = require("stream");
+const pipelineAsync = promisify(pipeline);
 
 class Users extends Http {
 
@@ -11,16 +14,22 @@ class Users extends Http {
         super(giveme, "users")
     };
 
-    customHttpFind(context, stream, headers) {
-        this.find().pipe(stream).on("data", data => console.log(data))
+    async customHttpFind(context, stream, headers) {
+        await pipelineAsync(
+            this.find(),
+            stream.on("data", data => console.log(data))
+        );
     }
 
-    httpUserByCity(context, stream, headers) {
-        this.aggregate([
-            { $group: { _id: "$address.city", count: { $sum: 1 }, logins: { $push: { login: "$login" }}}},
-            { $project: { _id: 0, city: "$_id", count: 1, logins: 1}}, //_id: 0 -> remove id
-            { $sort: { city: 1 } },
-        ]).pipe(stream);
+    async httpUserByCity(context, stream, headers) {
+        await pipelineAsync(
+            this.aggregate([
+                { $group: { _id: "$address.city", count: { $sum: 1 }, logins: { $push: { login: "$login" }}}},
+                { $project: { _id: 0, city: "$_id", count: 1, logins: 1}}, //_id: 0 -> remove id
+                { $sort: { city: 1 } },
+            ]),
+            stream
+        );
     }
 };
 

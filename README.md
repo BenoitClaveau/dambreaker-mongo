@@ -108,6 +108,10 @@ mongoUpdateMany |
 
 ```js
 const { Http } = require("damless-mongo");
+const { promisify } = require("util");
+const { pipeline } = require("stream");
+const pipelineAsync = promisify(pipeline);
+
 class Api extends Http {
 
     //giveme is the dependency injection service used by damless
@@ -117,7 +121,10 @@ class Api extends Http {
 
     //override the default httpFind an use Crud primitives
     async httpFind(context, stream, headers) {
-        this.findWords(context.query.q).pipe(stream);
+        await pipelineAsync(
+            this.findWords(context.query.q),
+            stream
+        );
     }
 }
 ```
