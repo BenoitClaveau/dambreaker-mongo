@@ -62,6 +62,26 @@ describe("A suite for mongo-querystring", () => {
         });
     });
 
+    it("parse in with attribute", async () => {
+        const qs = await setup.resolve("mongo-querystring");
+        const query = qs.parse("price[$in]=10&price[$in]=12");
+        expect(query.filter).to.eql({
+            price: {
+                $in: [10, 12]
+            }
+        });
+    });
+
+    it("parse in with comma", async () => {
+        const qs = await setup.resolve("mongo-querystring");
+        const query = qs.parse("price=10,12");
+        expect(query.filter).to.eql({
+            price: {
+                $in: [10, 12]
+            }
+        });
+    });
+
     it("parse regexp", async () => {
         const qs = await setup.resolve("mongo-querystring");
         const query = qs.parse("name=/^pa/");
