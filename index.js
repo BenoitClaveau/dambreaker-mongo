@@ -13,6 +13,10 @@ const {
     Mutex
 } = require('./lib/services');
 
+const {
+    ObjectID
+} = require('mongodb');
+
 module.exports = DamlessMongo;
 module.exports.Aggregate = Aggregate;
 module.exports.Crud = Crud;
@@ -20,3 +24,4 @@ module.exports.Find = Find;
 module.exports.Http = Http;
 module.exports.MongoQueryString = MongoQueryString;
 module.exports.MongoQMutexueryString = Mutex;
+module.exports.ObjectID = ObjectID;
