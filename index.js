@@ -10,6 +10,7 @@ const {
     Find,
     Http,
     MongoQueryString,
+    Mutex
 } = require('./lib/services');
 
 module.exports = DamlessMongo;
@@ -18,3 +19,4 @@ module.exports.Crud = Crud;
 module.exports.Find = Find;
 module.exports.Http = Http;
 module.exports.MongoQueryString = MongoQueryString;
+module.exports.MongoQMutexueryString = Mutex;
