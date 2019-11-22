@@ -66,8 +66,7 @@ class Setup {
             { login: "parker", password: "tony", address: { city: "Puteaux"}},
         ].map(async user => {;
             await db.collection("users").insertOne(user);
-        })
-
+        });
     };
 
     async clear() {

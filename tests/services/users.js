@@ -13,7 +13,7 @@ class Users extends Http {
     constructor(giveme) {
         super(giveme, "users")
     };
-
+    
     async customHttpFind(context, stream, headers) {
         await pipelineAsync(
             this.find(),

@@ -104,6 +104,17 @@ describe("A suite for mongo-querystring", () => {
         });
     });
 
+    it("parse regexp with parenthesis", async () => {
+        const qs = await setup.resolve("mongo-querystring");
+        const query = qs.parse("name=/^le numero \\(30\\)/");
+        expect(query.filter).to.eql({
+            name: {
+                $options: "",
+                $regex: "^le numero \\(30\\)"
+            }
+        });
+    });
+
     it("parse or with regex", async () => {
         const qs = await setup.resolve("mongo-querystring");
         const query = qs.parse("email=/^ben/ig||firstName=/^ben/ig");

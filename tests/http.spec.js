@@ -23,7 +23,7 @@ describe("A suite for http", () => {
         const res = await client.get({ url: "http://localhost:3100/users", json: true });
         expect(res.statusCode).to.be(200);
         expect(res.body.length).to.be(6);
-    }).timeout(5000);
+    }).timeout(10000);
 
     it("get with regexp", async () => {
         const { damless } = setup;

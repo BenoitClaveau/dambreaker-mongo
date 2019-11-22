@@ -13,12 +13,12 @@ process.on('unhandledRejection', (reason, p) => {
     console.error('Unhandled Rejection at:', p, 'reason:', inspect(reason));
 });
 
-describe("A suite for GridFS", () => {
+xdescribe("A suite for GridFS", () => {
 
     before(async function() {  this.timeout(10000); await setup.run(); });
     after(async () => await setup.stop())
 
-    it("gridfs", async () => {
+    xit("gridfs", async () => {
         // const { damless } = setup;
         // const client = await damless.resolve("client");
         // const res = await client.get({ url: "http://localhost:3100/users", json: true });

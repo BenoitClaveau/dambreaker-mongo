@@ -15,7 +15,7 @@ process.on('unhandledRejection', (reason, p) => {
   
 describe("A suite for mongo db", () => {
     before(async function() {  this.timeout(10000); await setup.run({ http: false }); });
-    after(async () => await setup.stop())
+    after(async () => await setup.stop());
 
     it("connect", async () => {
         const mongo = await setup.damless.resolve("mongo");
@@ -28,5 +28,5 @@ describe("A suite for mongo db", () => {
         let db = await mongo.connect();
         const docs = await db.collection("users").find().toArray();
         expect(docs.length).to.be(6);
-    }).timeout(5000);
+    }).timeout(10000);
 });
