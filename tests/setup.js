@@ -1,6 +1,6 @@
 /*!
  * damless-mongo
- * Copyright(c) 2018 Benoît Claveau <benoit.claveau@gmail.com>
+ * Copyright(c) 2021 Benoît Claveau <benoit.claveau@gmail.com>
  * MIT Licensed
  */
 "use strict"
@@ -32,8 +32,8 @@ class Setup {
             
             if (!mongo)  return
             const config = await damless.resolve("config");
-            if (config.mongo.host !== "localhost") throw new Error("Inconherent mongo connectionString.");
-            if (config.mongo.database !== "test") throw new Error("Inconherent mongo connectionString.");
+            if (config.mongo.host !== "localhost") throw new Error("Unexpected mongo connectionString.");
+            if (config.mongo.database !== "test") throw new Error("Unexpected mongo connectionString.");
 
             await this.clear();
             await this.schema();
@@ -47,8 +47,8 @@ class Setup {
 
     async schema() {
         const { damless } = this;
-        let mongo = await damless.resolve("mongo");
-        let db = await mongo.connect();
+        const mongo = await damless.resolve("mongo");
+        const db = await mongo.connect();
         await db.createCollection("users");
     };
     
@@ -71,9 +71,9 @@ class Setup {
 
     async clear() {
         const { damless } = this;
-        let mongo = await damless.resolve("mongo");
-        let db = await mongo.connect();
-        await db.collection("users").deleteMany();
+        const mongo = await damless.resolve("mongo");
+        const db = await mongo.connect();
+        await db.dropDatabase();
     };
 
     async stop() {

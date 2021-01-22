@@ -1,6 +1,6 @@
 /*!
  * damless-mongo
- * Copyright(c) 2018 Benoît Claveau <benoit.claveau@gmail.com>
+ * Copyright(c) 2021 Benoît Claveau <benoit.claveau@gmail.com>
  * MIT Licensed
  */
 "use strict"
