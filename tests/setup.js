@@ -48,14 +48,14 @@ class Setup {
     async schema() {
         const { damless } = this;
         const mongo = await damless.resolve("mongo");
-        const db = await mongo.connect();
+        const db = await mongo.singleConnect();
         await db.createCollection("users");
     };
     
     async data() {
         const { damless } = this;
         const mongo = await damless.resolve("mongo");
-        const db = await mongo.connect();
+        const db = await mongo.singleConnect();
 
         [
             { login: "paul", password: "1234", address: { city: "Paris"}},
@@ -72,7 +72,7 @@ class Setup {
     async clear() {
         const { damless } = this;
         const mongo = await damless.resolve("mongo");
-        const db = await mongo.connect();
+        const db = await mongo.singleConnect();
         await db.dropDatabase();
     };
 

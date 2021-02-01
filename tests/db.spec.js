@@ -19,13 +19,13 @@ describe("A suite for mongo db", () => {
 
     it("connect", async () => {
         const mongo = await setup.damless.resolve("mongo");
-        let db = await mongo.connect();
+        const db = await mongo.singleConnect();
         expect(db.databaseName).to.be("test");
     });
 
     it("find", async () => {
         const mongo = await setup.damless.resolve("mongo");
-        let db = await mongo.connect();
+        const db = await mongo.singleConnect();
         const docs = await db.collection("users").find().toArray();
         expect(docs.length).to.be(6);
     }).timeout(10000);
