@@ -1,6 +1,6 @@
 {
     "name": "damless-mongo",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Mongo client for damless",
     "main": "index.js",
     "dependencies": {
@@ -13,7 +13,6 @@
     "devDependencies": {
         "coveralls": "latest",
         "expect.js": "latest",
-        "istanbul": "latest",
         "mocha": "latest",
         "nyc": "latest",
         "chalk": "latest"
